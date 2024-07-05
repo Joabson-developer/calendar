@@ -80,7 +80,6 @@ const WEEKDAY = [
   }
 ] as const
 
-// TODO: criar um escape para previuos no janeiro e next no dezembro.
 export class Calendar {
   private _date: Date
   private _MAXIMUN_NUMBER_OF_DAYS_IN_THE_YEAR = 367
@@ -341,11 +340,16 @@ export class Calendar {
     )
   }
 
+  // TODO: tratar erro de data inválida
   private _setDate() {
-    this._date.setMonth(this._month)
-    this._date.setFullYear(
-      Number((document.querySelector("#input-year") as HTMLInputElement).value)
+    const value = Number(
+      (document.querySelector("#input-year") as HTMLInputElement).value
     )
+
+    if (value < 100) return
+
+    this._date.setMonth(this._month)
+    this._date.setFullYear(value)
     this._init()
     this._closeDialog()
   }

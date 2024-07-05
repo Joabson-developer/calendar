@@ -78,7 +78,6 @@ const WEEKDAY = [
         fullName: "Sábado"
     }
 ];
-// TODO: criar um escape para previuos no janeiro e next no dezembro.
 export class Calendar {
     _date;
     _MAXIMUN_NUMBER_OF_DAYS_IN_THE_YEAR = 367;
@@ -277,9 +276,13 @@ export class Calendar {
         });
         this._month = Object.values(MONTH).findIndex(({ abbrev }) => abbrev === target.innerText);
     }
+    // TODO: tratar erro de data inválida
     _setDate() {
+        const value = Number(document.querySelector("#input-year").value);
+        if (value < 100)
+            return;
         this._date.setMonth(this._month);
-        this._date.setFullYear(Number(document.querySelector("#input-year").value));
+        this._date.setFullYear(value);
         this._init();
         this._closeDialog();
     }
