@@ -77,6 +77,23 @@ body {
   justify-content: space-between;
   margin-bottom: 24px;
 }
+.dialog__header__label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.dialog__header__label--error input,
+.dialog__header__label--error input:focus-visible {
+  outline: 1px solid #ff0000;
+  color: #ff0000;
+}
+.dialog__header__label--error input::placeholder,
+.dialog__header__label--error input:focus-visible::placeholder {
+  color: #ff0000;
+}
+.dialog__header__label--error span {
+  display: block;
+}
 .dialog__header__input {
   font-size: 16px;
   font-weight: bold;
@@ -84,9 +101,16 @@ body {
   border: none;
   width: 60px;
   color: #ffffff;
+  border-radius: 2px;
+  padding: 4px;
 }
 .dialog__header__input::placeholder {
   color: #cfcfcf;
+}
+.dialog__header__input-error {
+  color: #ff0000;
+  font-size: 12px;
+  display: none;
 }
 .dialog__header__close {
   border: none;

@@ -246,6 +246,7 @@ export class Calendar {
     dialog.classList.add("dialog")
     dialog.innerHTML = `
       <div class="dialog__header">
+      <label class="dialog__header__label">
         <input
           autofocus
           id="input-year"
@@ -253,6 +254,9 @@ export class Calendar {
           type="number"
           aria-label="selecione o ano"
         />
+        <span class="dialog__header__input-error">O ano não pode ser inferior a 100</span>
+      </label>
+
         <button
           class="dialog__header__close"
           data-action="close-dialog"
@@ -270,6 +274,20 @@ export class Calendar {
       </div>    
     `
     document.body.appendChild(dialog)
+
+    const inputYear = dialog.querySelector("#input-year") as HTMLInputElement
+
+    inputYear.addEventListener("input", (event) => {
+      const target = event.target as HTMLInputElement
+      const value = Number(target.value)
+      if (value < 100) {
+        inputYear.parentElement!.classList.add("dialog__header__label--error")
+      } else {
+        inputYear.parentElement!.classList.remove(
+          "dialog__header__label--error"
+        )
+      }
+    })
   }
 
   private _groupByWeek(days: Date[]): Date[][] {
@@ -340,13 +358,14 @@ export class Calendar {
     )
   }
 
-  // TODO: tratar erro de data inválida
   private _setDate() {
-    const value = Number(
-      (document.querySelector("#input-year") as HTMLInputElement).value
-    )
+    const inputYear = document.querySelector("#input-year") as HTMLInputElement
+    const value = Number(inputYear.value)
 
-    if (value < 100) return
+    if (value < 100) {
+      inputYear.focus()
+      return
+    }
 
     this._date.setMonth(this._month!)
     this._date.setFullYear(value)
