@@ -139,6 +139,10 @@ td.today {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
+
+  @media (width <= 450px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 .dialog-body .month {
   min-width: 60px;
