@@ -11,60 +11,27 @@ body {
   font-family: Arial, sans-serif;
   background: url("../img/background.png");
   backdrop-filter: brightness(1.4);
-
   display: grid;
   place-items: center;
   color: #ffffff;
 }
 
-.container {
+.calendar {
   user-select: none;
 }
-
-th,
-td {
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  cursor: default;
-
-  transition: 250ms;
-}
-
-td {
-  border-radius: 50%;
-}
-
-td:hover {
-  background-color: #999999;
-  color: #ffffff;
-}
-
-td:not(.current-month, :hover) {
-  color: #999999;
-}
-
-td.today {
-  background-color: #f38064;
-  color: #000000;
-}
-
-.table-header {
+.calendar__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-inline: 12px;
   margin-bottom: 24px;
 }
-
-.table-header-controls {
+.calendar__header__controls {
   display: flex;
   align-items: center;
   gap: 4px;
 }
-
-.table-header-month,
-.table-header-control {
+.calendar__header__button {
   border: none;
   background: transparent;
   color: #ffffff;
@@ -72,15 +39,13 @@ td.today {
   padding: 4px;
   border-radius: 4px;
 }
-.table-header-month:hover,
-.table-header-control:hover {
+.calendar__header__button:hover {
   background-color: #666666;
 }
-
-.table-header-control.table-header-control-left {
+.calendar__header__button--up {
   margin-bottom: -2px;
 }
-.table-header-control.table-header-control-right {
+.calendar__header__button--down {
   margin-top: -2px;
 }
 
@@ -134,19 +99,19 @@ td.today {
 .dialog__header__close:hover {
   scale: 1.2;
 }
-
 .dialog__body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-
-  @media (width <= 450px) {
+}
+@media (width <= 450px) {
+  .dialog__body {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 .dialog__body .month {
   min-width: 60px;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
   border-radius: 8px;
   background-color: #292929;
   border: none;
@@ -154,27 +119,46 @@ td.today {
   transition: 350ms;
   scale: 0.9;
 }
-.dialog__body .month:hover,
-.dialog__body .month.month-active {
+.dialog__body .month.month-active, .dialog__body .month:hover {
   background-color: #666666;
   scale: 1;
 }
-
 .dialog__footer {
   margin-top: 24px;
   display: flex;
   justify-content: flex-end;
   gap: 16px;
 }
-
-.dialog__footer__button.dialog__footer__button--cancel,
-.dialog__footer__button.dialog__footer__button--ok {
+.dialog__footer__button {
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
 }
-.dialog__footer__button.dialog__footer__button--cancel:hover,
-.dialog__footer__button.dialog__footer__button--ok:hover {
+.dialog__footer__button:hover {
   background-color: #cccccc;
 }
+
+.table__th, .table__td {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  cursor: default;
+  transition: 250ms;
+}
+.table__td {
+  border-radius: 50%;
+}
+.table__td:hover {
+  background-color: #999999;
+  color: #ffffff;
+}
+.table__td:not(.table__td--current-month, :hover) {
+  color: #999999;
+}
+.table__td--today {
+  background-color: #f38064;
+  color: #000000;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,38 @@
+.calendar {
+  user-select: none;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 12px;
+    margin-bottom: 24px;
+
+    &__controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    &__button {
+      border: none;
+      background: transparent;
+      color: #ffffff;
+      font-size: 16px;
+      padding: 4px;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #666666;
+      }
+
+      &--up {
+        margin-bottom: -2px;
+      }
+
+      &--down {
+        margin-top: -2px;
+      }
+    }
+  }
+}

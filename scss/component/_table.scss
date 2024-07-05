@@ -1,0 +1,29 @@
+.table {
+  &__th,
+  &__td {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    cursor: default;
+
+    transition: 250ms;
+  }
+
+  &__td {
+    border-radius: 50%;
+
+    &:hover {
+      background-color: #999999;
+      color: #ffffff;
+    }
+
+    &:not(.table__td--current-month, :hover) {
+      color: #999999;
+    }
+
+    &--today {
+      background-color: #f38064;
+      color: #000000;
+    }
+  }
+}

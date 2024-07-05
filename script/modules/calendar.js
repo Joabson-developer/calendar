@@ -155,24 +155,24 @@ export class Calendar {
     }
     _buildCalendar(calendar) {
         const calendarElements = `
-      <div class="table-header">
-        <button class="table-header-month" data-action="show-dialog">${MONTH[this._date.getMonth()].fullName} de ${this._date.getFullYear()}</button>
+      <div class="calendar__header">
+        <button class="calendar__header__button" data-action="show-dialog">${MONTH[this._date.getMonth()].fullName} de ${this._date.getFullYear()}</button>
 
-        <div class="table-header-controls">
-          <button class="table-header-control table-header-control-left" data-action="previous">
+        <div class="calendar__header__controls">
+          <button class="calendar__header__button calendar__header__button--up" data-action="previous">
             ⯅
           </button>
-          <button class="table-header-control table-header-control-right" data-action="next">
+          <button class="calendar__header__button calendar__header__button--down" data-action="next">
             ⯆
           </button>
         </div>
       </div>
 
-      <table>
+      <table class="table">
         <thead>
           <tr>
           ${Object.values(WEEKDAY)
-            .map(({ abbrev }) => `<th>${abbrev.charAt(0)}</th>`)
+            .map(({ abbrev }) => `<th class="table__th">${abbrev.charAt(0)}</th>`)
             .join("\n")}
           </tr>
         </thead>
@@ -183,11 +183,11 @@ export class Calendar {
               <tr>
                 ${week
             .map((date) => `
-                  <td class="${this._date.getMonth() === date.getMonth()
-            ? "current-month"
+                  <td class="table__td${this._date.getMonth() === date.getMonth()
+            ? " table__td--current-month"
             : ""}${new Date().getDate() === date.getDate() &&
             new Date().getMonth() === date.getMonth()
-            ? " today"
+            ? " table__td--today"
             : ""}">
                     ${date.getDate()}
                   </td>

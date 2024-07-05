@@ -183,26 +183,28 @@ export class Calendar {
 
   private _buildCalendar(calendar: Date[][]) {
     const calendarElements = `
-      <div class="table-header">
-        <button class="table-header-month" data-action="show-dialog">${
+      <div class="calendar__header">
+        <button class="calendar__header__button" data-action="show-dialog">${
           MONTH[this._date.getMonth()].fullName
         } de ${this._date.getFullYear()}</button>
 
-        <div class="table-header-controls">
-          <button class="table-header-control table-header-control-left" data-action="previous">
+        <div class="calendar__header__controls">
+          <button class="calendar__header__button calendar__header__button--up" data-action="previous">
             ⯅
           </button>
-          <button class="table-header-control table-header-control-right" data-action="next">
+          <button class="calendar__header__button calendar__header__button--down" data-action="next">
             ⯆
           </button>
         </div>
       </div>
 
-      <table>
+      <table class="table">
         <thead>
           <tr>
           ${Object.values(WEEKDAY)
-            .map(({ abbrev }) => `<th>${abbrev.charAt(0)}</th>`)
+            .map(
+              ({ abbrev }) => `<th class="table__th">${abbrev.charAt(0)}</th>`
+            )
             .join("\n")}
           </tr>
         </thead>
@@ -215,14 +217,14 @@ export class Calendar {
                 ${week
                   .map(
                     (date) => `
-                  <td class="${
+                  <td class="table__td${
                     this._date.getMonth() === date.getMonth()
-                      ? "current-month"
+                      ? " table__td--current-month"
                       : ""
                   }${
                       new Date().getDate() === date.getDate() &&
                       new Date().getMonth() === date.getMonth()
-                        ? " today"
+                        ? " table__td--today"
                         : ""
                     }">
                     ${date.getDate()}
