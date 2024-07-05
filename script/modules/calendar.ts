@@ -84,7 +84,7 @@ export class Calendar {
   private _date: Date
   private _MAXIMUN_NUMBER_OF_DAYS_IN_THE_YEAR = 367
   private _elementWrapper: HTMLElement
-  private _month: number
+  private _month?: number
 
   constructor({
     currentDate = new Date(),
@@ -348,7 +348,7 @@ export class Calendar {
 
     if (value < 100) return
 
-    this._date.setMonth(this._month)
+    this._date.setMonth(this._month!)
     this._date.setFullYear(value)
     this._init()
     this._closeDialog()
