@@ -278,6 +278,14 @@ export class Calendar {
             .join("\n");
         inputYear.value = this._date.getFullYear().toString();
         dialog.showModal();
+        dialog.addEventListener("click", (event) => {
+            const rect = dialog.getBoundingClientRect();
+            if (event.clientX < rect.left ||
+                event.clientX > rect.right ||
+                event.clientY < rect.top ||
+                event.clientY > rect.bottom)
+                dialog.close();
+        });
     }
     _closeDialog() {
         const dialog = document.querySelector(".dialog");

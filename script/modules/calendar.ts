@@ -340,6 +340,18 @@ export class Calendar {
     inputYear.value = this._date.getFullYear().toString()
 
     dialog.showModal()
+
+    dialog.addEventListener("click", (event) => {
+      const rect = dialog.getBoundingClientRect()
+
+      if (
+        event.clientX < rect.left ||
+        event.clientX > rect.right ||
+        event.clientY < rect.top ||
+        event.clientY > rect.bottom
+      )
+        dialog.close()
+    })
   }
 
   private _closeDialog() {

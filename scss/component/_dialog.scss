@@ -10,6 +10,7 @@
   border-radius: 8px;
   background: url("../img/background.png");
   color: #ffffff;
+  transition: 10s;
 
   &:not([open]) {
     display: none;
