@@ -135,6 +135,7 @@ export class Calendar {
         ];
         const groupedByWeek = this._groupByWeek(calendar);
         this._buildCalendar(groupedByWeek);
+        this._buildDialog();
     }
     _getYearInDays() {
         return Array.from({
@@ -200,6 +201,36 @@ export class Calendar {
     `;
         this._elementWrapper.innerHTML = calendarElements;
     }
+    _buildDialog() {
+        const dialog = document.createElement("dialog");
+        dialog.classList.add("dialog");
+        dialog.innerHTML = `
+      <div class="dialog__header">
+        <input
+          autofocus
+          id="input-year"
+          class="dialog__header__input"
+          type="number"
+          aria-label="selecione o ano"
+        />
+        <button
+          class="dialog__header__close"
+          data-action="close-dialog"
+          aria-label="fechar"
+        >
+          x
+        </button>
+      </div>
+
+      <div class="dialog__body"></div>
+
+      <div class="dialog__footer">
+        <button data-action="close-dialog" class="dialog__footer__button dialog__footer__button--cancel">cancelar</button>
+        <button class="dialog__footer__button dialog__footer__button--ok" data-action="set-date">ok</button>
+      </div>    
+    `;
+        document.body.appendChild(dialog);
+    }
     _groupByWeek(days) {
         return days.reduce((weeks, day, index) => {
             const weekIndex = Math.floor(index / 7);
@@ -227,7 +258,7 @@ export class Calendar {
     _showDialog() {
         const dialog = document.querySelector(".dialog");
         const inputYear = document.querySelector("#input-year");
-        const dialogBody = document.querySelector(".dialog-body");
+        const dialogBody = document.querySelector(".dialog__body");
         dialogBody.innerHTML = Object.values(MONTH)
             .map(({ abbrev }, index) => `<button class="month${this._date.getMonth() === index ? " month-active" : ""}" data-action="set-month">${abbrev}</button>`)
             .join("\n");

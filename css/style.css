@@ -17,7 +17,7 @@ body {
   color: #ffffff;
 }
 
-.table-wrapper {
+.container {
   user-select: none;
 }
 
@@ -106,13 +106,13 @@ td.today {
   display: grid;
   place-items: center;
 }
-.dialog-header {
+.dialog__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
 }
-.dialog-title {
+.dialog__header__input {
   font-size: 16px;
   font-weight: bold;
   background: transparent;
@@ -120,10 +120,10 @@ td.today {
   width: 60px;
   color: #ffffff;
 }
-.dialog-title::placeholder {
+.dialog__header__input::placeholder {
   color: #cfcfcf;
 }
-.dialog-close {
+.dialog__header__close {
   border: none;
   background: transparent;
   font-size: 20px;
@@ -131,11 +131,11 @@ td.today {
   cursor: pointer;
   transition: 150ms;
 }
-.dialog-close:hover {
+.dialog__header__close:hover {
   scale: 1.2;
 }
 
-.dialog-body {
+.dialog__body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
@@ -144,7 +144,7 @@ td.today {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-.dialog-body .month {
+.dialog__body .month {
   min-width: 60px;
   aspect-ratio: 1 / 1;
   border-radius: 8px;
@@ -154,27 +154,27 @@ td.today {
   transition: 350ms;
   scale: 0.9;
 }
-.dialog-body .month:hover,
-.dialog-body .month.month-active {
+.dialog__body .month:hover,
+.dialog__body .month.month-active {
   background-color: #666666;
   scale: 1;
 }
 
-.dialog-footer {
+.dialog__footer {
   margin-top: 24px;
   display: flex;
   justify-content: flex-end;
   gap: 16px;
 }
 
-button.cancel,
-button.ok {
+.dialog__footer__button.dialog__footer__button--cancel,
+.dialog__footer__button.dialog__footer__button--ok {
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
 }
-button.cancel:hover,
-button.ok:hover {
+.dialog__footer__button.dialog__footer__button--cancel:hover,
+.dialog__footer__button.dialog__footer__button--ok:hover {
   background-color: #cccccc;
 }
