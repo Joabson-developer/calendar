@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: url("../img/background.png");
+  backdrop-filter: brightness(1.4);
+
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+}
+
+th,
+td {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  cursor: default;
+
+  transition: 250ms;
+}
+
+td {
+  border-radius: 50%;
+}
+
+td:hover {
+  background-color: #999999;
+  color: #ffffff;
+}
+
+td:not(.current-month, :hover) {
+  color: #999999;
+}
+
+td.today {
+  background-color: #f38064;
+  color: #000000;
+}
