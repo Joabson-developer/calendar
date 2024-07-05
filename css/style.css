@@ -17,6 +17,10 @@ body {
   color: #ffffff;
 }
 
+.table-wrapper {
+  user-select: none;
+}
+
 th,
 td {
   width: 40px;
@@ -43,4 +47,39 @@ td:not(.current-month, :hover) {
 td.today {
   background-color: #f38064;
   color: #000000;
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 12px;
+  margin-bottom: 24px;
+}
+
+.table-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.table-header-month,
+.table-header-control {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+}
+.table-header-month:hover,
+.table-header-control:hover {
+  background-color: #666666;
+}
+
+.table-header-control.table-header-control-left {
+  margin-bottom: -2px;
+}
+.table-header-control.table-header-control-right {
+  margin-top: -2px;
 }
