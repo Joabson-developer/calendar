@@ -15,17 +15,41 @@
 
     <dialog class="dialog">
       <div class="dialog-header">
-        <span class="dialog-title">2024</span>
-        <button autofocus class="dialog-close" data-action="close-dialog">
+        <input
+          autofocus
+          class="dialog-title"
+          value="2024"
+          type="number"
+          aria-label="selecione o ano"
+        />
+        <button
+          class="dialog-close"
+          data-action="close-dialog"
+          aria-label="fechar"
+        >
           x
         </button>
       </div>
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sed
-        placeat ducimus quae adipisci, cum et doloribus atque dicta nisi illum,
-        voluptatibus, alias vel deserunt ut debitis voluptas id aspernatur!
-      </p>
+      <div class="dialog-body">
+        <button class="month">Jan</button>
+        <button class="month">Fev</button>
+        <button class="month">Mar</button>
+        <button class="month">Abr</button>
+        <button class="month">Mai</button>
+        <button class="month">Jun</button>
+        <button class="month">Jul</button>
+        <button class="month">Ago</button>
+        <button class="month">Set</button>
+        <button class="month">Out</button>
+        <button class="month">Nov</button>
+        <button class="month">Dez</button>
+      </div>
+
+      <div class="dialog-footer">
+        <button data-action="close-dialog" class="cancel">cancelar</button>
+        <button class="ok">ok</button>
+      </div>
     </dialog>
   </body>
 </html>

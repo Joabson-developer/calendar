@@ -115,10 +115,61 @@ td.today {
 .dialog-title {
   font-size: 16px;
   font-weight: bold;
+  background: transparent;
+  border: none;
+  width: 60px;
+  color: #ffffff;
+}
+.dialog-title::placeholder {
+  color: #cfcfcf;
 }
 .dialog-close {
   border: none;
   background: transparent;
-  font-size: 24px;
+  font-size: 20px;
   color: #ffffff;
+  cursor: pointer;
+  transition: 150ms;
+}
+.dialog-close:hover {
+  scale: 1.2;
+}
+
+.dialog-body {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.dialog-body .month {
+  min-width: 60px;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background-color: #292929;
+  border: none;
+  color: #ffffff;
+  transition: 350ms;
+  scale: 0.9;
+}
+.dialog-body .month:hover {
+  background-color: #666666;
+  scale: 1;
+}
+
+.dialog-footer {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+button.cancel,
+button.ok {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button.cancel:hover,
+button.ok:hover {
+  background-color: #cccccc;
 }
