@@ -154,7 +154,8 @@ td.today {
   transition: 350ms;
   scale: 0.9;
 }
-.dialog-body .month:hover {
+.dialog-body .month:hover,
+.dialog-body .month.month-active {
   background-color: #666666;
   scale: 1;
 }

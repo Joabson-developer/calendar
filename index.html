@@ -17,8 +17,8 @@
       <div class="dialog-header">
         <input
           autofocus
+          id="input-year"
           class="dialog-title"
-          value="2024"
           type="number"
           aria-label="selecione o ano"
         />
@@ -32,23 +32,23 @@
       </div>
 
       <div class="dialog-body">
-        <button class="month">Jan</button>
-        <button class="month">Fev</button>
-        <button class="month">Mar</button>
-        <button class="month">Abr</button>
-        <button class="month">Mai</button>
-        <button class="month">Jun</button>
-        <button class="month">Jul</button>
-        <button class="month">Ago</button>
-        <button class="month">Set</button>
-        <button class="month">Out</button>
-        <button class="month">Nov</button>
-        <button class="month">Dez</button>
+        <button class="month" data-action="set-month">Jan</button>
+        <button class="month" data-action="set-month">Fev</button>
+        <button class="month" data-action="set-month">Mar</button>
+        <button class="month" data-action="set-month">Abr</button>
+        <button class="month" data-action="set-month">Mai</button>
+        <button class="month" data-action="set-month">Jun</button>
+        <button class="month" data-action="set-month">Jul</button>
+        <button class="month" data-action="set-month">Ago</button>
+        <button class="month" data-action="set-month">Set</button>
+        <button class="month" data-action="set-month">Out</button>
+        <button class="month" data-action="set-month">Nov</button>
+        <button class="month" data-action="set-month">Dez</button>
       </div>
 
       <div class="dialog-footer">
         <button data-action="close-dialog" class="cancel">cancelar</button>
-        <button class="ok">ok</button>
+        <button class="ok" data-action="set-date">ok</button>
       </div>
     </dialog>
   </body>

@@ -83,6 +83,7 @@ export class Calendar {
     _date;
     _MAXIMUN_NUMBER_OF_DAYS_IN_THE_YEAR = 367;
     _elementWrapper;
+    _month;
     constructor({ currentDate = new Date(), elementWrapper = document.body } = {}) {
         this._date = currentDate;
         this._elementWrapper = (typeof elementWrapper === "string"
@@ -106,6 +107,12 @@ export class Calendar {
                     break;
                 case "close-dialog":
                     this._closeDialog();
+                    break;
+                case "set-month":
+                    this._setMonth(target);
+                    break;
+                case "set-date":
+                    this._setDate();
                     break;
             }
         });
@@ -146,7 +153,7 @@ export class Calendar {
         }, Array.from({ length: 12 }, () => []));
     }
     _buildCalendar(calendar) {
-        const table = `
+        const calendarElements = `
       <div class="table-header">
         <button class="table-header-month" data-action="show-dialog">${MONTH[this._date.getMonth()].fullName} de ${this._date.getFullYear()}</button>
 
@@ -191,7 +198,7 @@ export class Calendar {
         </tbody>
       </table>
     `;
-        this._elementWrapper.innerHTML = table;
+        this._elementWrapper.innerHTML = calendarElements;
     }
     _groupByWeek(days) {
         return days.reduce((weeks, day, index) => {
@@ -219,10 +226,30 @@ export class Calendar {
     }
     _showDialog() {
         const dialog = document.querySelector(".dialog");
+        const inputYear = document.querySelector("#input-year");
+        const dialogBody = document.querySelector(".dialog-body");
+        dialogBody.innerHTML = Object.values(MONTH)
+            .map(({ abbrev }, index) => `<button class="month${this._date.getMonth() === index ? " month-active" : ""}" data-action="set-month">${abbrev}</button>`)
+            .join("\n");
+        inputYear.value = this._date.getFullYear().toString();
         dialog.showModal();
     }
     _closeDialog() {
         const dialog = document.querySelector(".dialog");
         dialog.close();
+    }
+    _setMonth(target) {
+        document.querySelectorAll(".month").forEach((element) => {
+            element === target
+                ? element.classList.add("month-active")
+                : element.classList.remove("month-active");
+        });
+        this._month = Object.values(MONTH).findIndex(({ abbrev }) => abbrev === target.innerText);
+    }
+    _setDate() {
+        this._date.setMonth(this._month);
+        this._date.setFullYear(Number(document.querySelector("#input-year").value));
+        this._init();
+        this._closeDialog();
     }
 }
