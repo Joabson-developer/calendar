@@ -116,6 +116,12 @@ export class Calendar {
         case "next":
           this.next()
           break
+        case "show-dialog":
+          this._showDialog()
+          break
+        case "close-dialog":
+          this._closeDialog()
+          break
       }
     })
   }
@@ -170,7 +176,7 @@ export class Calendar {
   private _buildCalendar(calendar: Date[][]) {
     const table = `
       <div class="table-header">
-        <button class="table-header-month">${
+        <button class="table-header-month" data-action="show-dialog">${
           MONTH[this._date.getMonth()].fullName
         } de ${this._date.getFullYear()}</button>
 
@@ -257,5 +263,15 @@ export class Calendar {
   public previous() {
     this._date.setMonth(this._date.getMonth() - 1)
     this._init()
+  }
+
+  private _showDialog() {
+    const dialog = document.querySelector(".dialog") as HTMLDialogElement
+    dialog.showModal()
+  }
+
+  private _closeDialog() {
+    const dialog = document.querySelector(".dialog") as HTMLDialogElement
+    dialog.close()
   }
 }

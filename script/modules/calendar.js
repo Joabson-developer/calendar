@@ -101,6 +101,12 @@ export class Calendar {
                 case "next":
                     this.next();
                     break;
+                case "show-dialog":
+                    this._showDialog();
+                    break;
+                case "close-dialog":
+                    this._closeDialog();
+                    break;
             }
         });
     }
@@ -142,7 +148,7 @@ export class Calendar {
     _buildCalendar(calendar) {
         const table = `
       <div class="table-header">
-        <button class="table-header-month">${MONTH[this._date.getMonth()].fullName} de ${this._date.getFullYear()}</button>
+        <button class="table-header-month" data-action="show-dialog">${MONTH[this._date.getMonth()].fullName} de ${this._date.getFullYear()}</button>
 
         <div class="table-header-controls">
           <button class="table-header-control table-header-control-left" data-action="previous">
@@ -210,5 +216,13 @@ export class Calendar {
     previous() {
         this._date.setMonth(this._date.getMonth() - 1);
         this._init();
+    }
+    _showDialog() {
+        const dialog = document.querySelector(".dialog");
+        dialog.showModal();
+    }
+    _closeDialog() {
+        const dialog = document.querySelector(".dialog");
+        dialog.close();
     }
 }
