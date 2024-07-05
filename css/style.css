@@ -61,10 +61,12 @@ body {
   border-radius: 8px;
   background: url("../img/background.png");
   color: #ffffff;
-  transition: 10s;
+  animation: slideDown 1s ease-out;
+  visibility: visible;
 }
 .dialog:not([open]) {
-  display: none;
+  animation: slideUp 300ms ease-in;
+  visibility: hidden;
 }
 .dialog::backdrop {
   background-color: rgba(255, 255, 255, 0.2);
@@ -164,6 +166,22 @@ body {
   background-color: #cccccc;
 }
 
+@keyframes slideDown {
+  from {
+    translate: 0 -1000px;
+  }
+  to {
+    translate: 0;
+  }
+}
+@keyframes slideUp {
+  from {
+    translate: 0;
+  }
+  to {
+    translate: 0 -1000px;
+  }
+}
 .table__th, .table__td {
   width: 40px;
   height: 40px;
