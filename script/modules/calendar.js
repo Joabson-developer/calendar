@@ -201,6 +201,8 @@ export class Calendar {
         this._elementWrapper.innerHTML = calendarElements;
     }
     _buildDialog() {
+        if (document.querySelector(".dialog"))
+            return;
         const dialog = document.createElement("dialog");
         dialog.classList.add("dialog");
         dialog.innerHTML = `
